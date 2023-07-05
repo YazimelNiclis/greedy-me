@@ -1,0 +1,22 @@
+.titulo {
+  height: 20vh;
+  font-size: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 5px;
+}
+
+.letraAzul {
+  color: #1e1b4d;
+}
+.letraVerde {
+  color: #76b39d;
+}
+.letraNaranja {
+  color: #f7941e;
+}
+
+.formulario {
+  height: 20vh;
+}

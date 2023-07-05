@@ -1,16 +1,35 @@
+"use client";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
+import inicioStyles from "../styles/inicio.module.css";
+
 import Link from "next/link";
-
-const name = "Your Name";
-export const siteTitle = "Next.js Sample Website";
-
+import { useState } from "react";
+export const siteTitle = "greedyMe";
 export default function Layout({ children, home }) {
+  const [inicio, setInicio] = useState(true);
+  setTimeout(() => {
+    setInicio(false);
+  }, 4000);
+
   return (
-    <div className={styles.container}>
-      {/* <Head>
+    <>
+      {home && inicio ? (
+        <div className={inicioStyles.container}>
+          <Head>
+            <title>{siteTitle}</title>
+          </Head>
+          <Image
+            priority
+            src="/assets/logo.png"
+            fill={true}
+            className={inicioStyles.logo}
+          />
+        </div>
+      ) : (
+        <div className={styles.container}>
+          {/* <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
@@ -25,8 +44,8 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head> */}
-      <header className={styles.header}>
-        {/* {home ? (
+          <header className={styles.header}>
+            {/* {home ? (
           <>
             <Image
               priority
@@ -57,13 +76,16 @@ export default function Layout({ children, home }) {
             </h2>
           </>
         )} */}
-      </header>
-      <main>{children}</main>
-      {!home && (
-        <div className={styles.backToHome}>
-          <Link href="/">← Back to home</Link>
+          </header>
+          <main>{children}</main>
+
+          {/* {!home && (
+            <div className={styles.backToHome}>
+              <Link href="/">← Back to home</Link>
+            </div>
+          )} */}
         </div>
       )}
-    </div>
+    </>
   );
 }
